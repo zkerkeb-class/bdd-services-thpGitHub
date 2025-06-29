@@ -1,0 +1,21 @@
+services:
+  mongodb-database:
+    image: mongo:latest
+    container_name: mongodb-search
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password123
+    networks:
+      - crypto_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  crypto_network:
+    name: crypto_network
+    external: true 
